@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {FaReact} from 'react-icons/fa6'
+import Image from '../assets/farmyapp.png'
 import '../style.css'
 import _ from 'lodash'
 
@@ -9,16 +9,16 @@ const UserLogin = ({setUser}) => {
         if(!userName) return;
         localStorage.setItem('user', userName)
         setUser(userName)
-        localStorage.setItem('avatar', `https://picsum.photos/id/${_.random(1,1000)}/200/300`)
+        localStorage.setItem('avatar', `https://picsum.photos/id/237/200/300${_.random(1,1000)}/200/300`)
     }
   return (
     <div className='login_container'>
         <div className='login_title'>
-            <FaReact className='login_icon'/>
+            <img src={Image} alt=''/>
             <h1>Chat App</h1>
         </div>
         <div className='login_form'>
-            <input type="text" placeholder='Enter a Unique Name'
+            <input type="text" placeholder='Enter Your Name'
             onChange={(e) => setUserName(e.target.value)}/>
             <button onClick={handleUser}>Login</button>
         </div>

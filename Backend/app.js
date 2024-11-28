@@ -10,3 +10,18 @@ const io = new Server(server, {
         origin: "*"
     }
 })
+
+io.on("connection", (socket) => {
+    console.log("connected")
+
+    socket.on("chat", chat => {
+        io.emit("chat", chat)
+    })
+    socket.on("disconnect", () => {
+        console.log("disconnect")
+    })
+})
+
+server.listen("5003", () => {
+    console.log("server runnning on port 5003")
+})
