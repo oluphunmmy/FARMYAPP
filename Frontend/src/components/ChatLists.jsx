@@ -6,7 +6,7 @@ const ChatLists = ({chats}) => {
     function SenderChat ({message, username, avatar}) {
         return (
             <div className='chat_sender'>
-                <img src="https://picsum.photos/id/237/200/300" alt="" />
+                <img src={avatar} alt="" />
                 <p>
                     <strong>{username}</strong> <br/>
                     {message}
@@ -17,7 +17,7 @@ const ChatLists = ({chats}) => {
     function ReceiverChat ({message, username, avatar}) {
         return (
             <div className='chat_receiver'>
-                <img src='https://picsum.photos/id/237/200/300'  alt="" />
+                <img src={avatar} alt="" />
                 <p>
                     <strong>{username}</strong> <br/>
                     {message}
@@ -36,23 +36,23 @@ const ChatLists = ({chats}) => {
     <div className='chats_list'>
         {
             chats.map((chat, index) => {
-                if(chat.username === user) {
+                if(chat.user === user) {
                     return <SenderChat 
                     key={index}
                     message = {chat.message}
-                    username = {chat.username}
+                    username = {chat.user}
                     avatar = {chat.avatar}/>
                 }
                  else {
                     return <ReceiverChat 
                     key={index}
                     message = {chat.message}
-                    username = {chat.username}
+                    username = {chat.user}
                     avatar = {chat.avatar}/>
                  }
             })
         }
-        <div ref={endOfMessages}></div>
+         {/* <div ref={endOfMessages}></div> */}
     </div>
   )
 }

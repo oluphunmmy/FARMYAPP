@@ -61,8 +61,17 @@
     margin-bottom: 20px;
 }
 
-.chats_icon {
+.farmy_chat{
+    size: 900px;
+    color: green;
+    font-weight: 800;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+.farmapp-logo {
     color: red;
+    width: 100px;
 }
 
 .chats_logout {

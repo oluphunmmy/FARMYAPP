@@ -16,23 +16,33 @@ const ChatContainer = () => {
       setChats(chats);
     });
 
-    socketio.on('message', (msg) => {
-      setChats((prevChats) => [...prevChats, msg])
-    })
-
-    return () => {
-      socketio.off('chat')
-      socketio.off('message')
+  });
+    const sendToSocket = (chat) => {
+      socketio.emit('chat', chat)
     }
-  }, []);
+
+    // socketio.on('message', (msg) => {
+    //   setChats((prevChats) => [...prevChats, msg])
+    // })
+
+    // return () => {
+    //   socketio.off('chat')
+    //   socketio.off('message')
+    // }
+ 
 
   const addMessage = (chat) => {
     const newChat = {
-      username: localStorage.getItem("user"),
+      ...chat,
+      user: localStorage.getItem("user"),
       message: chat,
       avatar: localStorage.getItem("avatar"),
     };
-    socketio.emit('newMessage', newChat)
+
+    setChats([...chats, newChat])
+    sendToSocket([...chats, newChat])
+
+    // socketio.emit('newMessage', newChat)
   };
 
   const Logout = () => {
@@ -47,8 +57,8 @@ const ChatContainer = () => {
         <div className="home">
           <div className="chats_header">
             <h4>Username: {user}</h4>
-            <p>
-              <img src={Image} alt="" /> Chat with FarmyApp
+            <p className="farmy_chat">
+              <img className="farmapp-logo" src={Image} alt="" /> Chat with FarmyApp
             </p>
             <p className="chats_logout" onClick={Logout}>
               <strong>Logout</strong>

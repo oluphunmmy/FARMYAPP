@@ -9,7 +9,7 @@ const UserLogin = ({setUser}) => {
         if(!userName) return;
         localStorage.setItem('user', userName)
         setUser(userName)
-        localStorage.setItem('avatar', `https://picsum.photos/id/237/200/300${_.random(1,1000)}/200/300`)
+        localStorage.setItem('avatar', `https://picsum.photos/id/${_.random(1,1000)}/200/300`)
     }
   return (
     <div className='login_container'>
